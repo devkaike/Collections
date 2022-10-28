@@ -1,9 +1,10 @@
+package gg;
 import java.util.Random;
 //import java.util.stream.DoubleStream;
 
 public class Funcionario {
 	private String nome;
-	private String salario;
+	private double salario;
 	Random aleatorio = new Random();
 	public String geraNome() {
 		 
@@ -21,18 +22,23 @@ public class Funcionario {
          return nome;
 	}
 	
-	public String geraSalario() {
-		salario = "";
+	public double geraSalario() {
+		String s = "";
+		
 		for(int i = 0; i < 8; i++) {
 			int n = aleatorio.nextInt(9)+1;
 			int nn = (char)n;
-			salario += nn;
+			s += nn;
 		}
-		salario += ".";
+		s += ".";
 		for(int i = 0; i < 2; i++) {
 			int n = aleatorio.nextInt(9)+1;
 			int nn = (char)n;
-			salario += nn;
+			s += nn;
+			double aux = Double.valueOf(s).doubleValue();
+			int aux1 = (int)aux;
+			salario = aux1 / 10 + 0.34 * n;
+			
 		}
 		return salario;
 	}
@@ -43,10 +49,10 @@ public class Funcionario {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public String getSalario() {
+	public Double getSalario() {
 		return salario;
 	}
-	public void setSalario(String salario) {
+	public void setSalario(double salario) {
 		this.salario = salario;
 	}
 
